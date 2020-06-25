@@ -1,0 +1,9 @@
+shader pbr {
+    fn vertex_main() -> void {
+
+    }
+
+    module vertex {
+        
+    }
+}

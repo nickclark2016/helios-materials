@@ -1,0 +1,9 @@
+# IDE
+.vscode
+
+# Generated
+.antlr
+out/
+sunscript/
+
+__pycache__/
