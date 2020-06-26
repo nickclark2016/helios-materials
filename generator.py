@@ -13,7 +13,7 @@ from enum import Enum
 import os
 
 
-class ShaderListener(SuncriptListener):
+class SunScriptListener(SuncriptListener):
     def enterShaderBlock(self, ctx):
         print('Found Shader: {}'.format(ctx.Identifier()))
         # TODO: Implement shader block
@@ -22,6 +22,10 @@ class ShaderListener(SuncriptListener):
     def enterModuleBlock(self, ctx):
         print('Found Module: {}'.format(ctx.Identifier()))
         # TODO: Implement module block
+
+    def enterInputBlock(self, ctx):
+        print('Found Input Block: Location={}, Binding={}'.format(
+            ctx.locationStatement().Decimal(), ctx.bindingStatement().Decimal()))
 
     def enterFunctionBlock(self, ctx):
         print('Found Function {} returning {}'.format(
@@ -41,8 +45,8 @@ def process(input: str, output: str, lang: Language):
     stream = CommonTokenStream(lexer)
     parser = SuncriptParser(stream)
     walker = ParseTreeWalker()
-    listener = ShaderListener()
-    tree = parser.shaderBlock()
+    listener = SunScriptListener()
+    tree = parser.compilationUnit()
     listener.lang = lang
     walker.walk(listener, tree)
 

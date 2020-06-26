@@ -1,7 +1,14 @@
-shader pbr {
-    fn vertex_main() -> void {
+fn vertex_main() -> void {
 
-    }
+}
+
+shader pbr {
+    in positions  : f32vec3 at binding = 0, location = 0; 
+    in uvs        : f32vec2 at binding = 1, location = 1;
+    in normals    : f32vec3 at binding = 1, location = 2;
+    in tangents   : f32vec3 at binding = 1, location = 3;
+    in bitangents : f32vec3 at binding = 1, location = 4;
+    in colors     : f32vec4 at binding = 1, location = 5;
 
     module vertex {
         
