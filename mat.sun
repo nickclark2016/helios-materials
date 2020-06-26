@@ -1,4 +1,14 @@
-fn vertex_main() -> void {
+struct Light {
+    position    : f32vec3;
+    color       : f32vec4;
+    attenuation : f32vec3;
+};
+
+fn some_func() -> f32 {
+
+}
+
+fn shared_func() -> void {
 
 }
 
@@ -9,8 +19,20 @@ shader pbr {
     in tangents   : f32vec3 at binding = 1, location = 3;
     in bitangents : f32vec3 at binding = 1, location = 4;
     in colors     : f32vec4 at binding = 1, location = 5;
+    
+    fn reflect(ray : f32vec4, normal : f32vec4) -> f32vec4
+    {
+        return f32vec4(0.0);
+    }
+
+    fn pbr_function() -> f32vec4 {
+        x : f32 = 0.2;
+        y : f32vec4 = f32vec4(1.0);
+        z : f32vec4 = f32vec4(2.0, 3.0, 4.0, 5.0);
+        reflection : f32vec4 = reflect(z, y);
+    }
 
     module vertex {
-        
+
     }
 }

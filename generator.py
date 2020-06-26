@@ -28,9 +28,24 @@ class SunScriptListener(SuncriptListener):
             ctx.locationStatement().Decimal(), ctx.bindingStatement().Decimal()))
 
     def enterFunctionBlock(self, ctx):
-        print('Found Function {} returning {}'.format(
-            ctx.Identifier(), ctx.types().getText()))
+        print('Found Function {} returning {} with Arguments {}'.format(
+            ctx.Identifier(), ctx.types().getText(), self._extractArgs(ctx.argumentList())))
         # TODO: Implement function block
+
+    def enterStructBlock(self, ctx):
+        print('Found Struct with Name: {}'.format(ctx.Identifier()))
+
+    def _extractArgs(self, args):
+        res = []
+        if args is not None:
+            for arg in args.argument():
+                res.append(
+                    '{} {}'.format(arg.typeIdSeq().types().getText(), arg.Identifier()))
+        if res:
+            res_string = ', '.join(res)
+        else:
+            res_string = '[None]'
+        return res_string
 
 
 def create_output_folder(name: str):

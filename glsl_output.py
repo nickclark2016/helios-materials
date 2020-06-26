@@ -2,7 +2,9 @@ from enum import Enum
 
 
 def convert(name: str):
-    if name == 'bool':
+    if name == 'void':
+        return 'void'
+    elif name == 'bool':
         return 'bool'
     elif name == 'f64':
         return 'double'
