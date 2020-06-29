@@ -3,7 +3,10 @@ grammar Suncript;
 compilationUnit : ( shaderBlock | structBlock | functionBlock)*;
 
 structBlock:
-	StructSpecifier Identifier LeftBrace variable* RightBrace StatementEnd
+	StructSpecifier Identifier LeftBrace
+	(
+		variable StatementEnd
+	)* RightBrace StatementEnd
 	;
 StructSpecifier : 'struct';
 
